@@ -1,4 +1,5 @@
 #include "sorting.h"
+#include <stdio.h>
 #include <stdbool.h>
 
 static Status_t swap(int *element_1, int *element_2) {
@@ -25,5 +26,21 @@ Status_t intBubbleSort(int array[], int array_len) {
         }
     } while ( !is_sorted );
 
-    return 0;
+    return SUCCESS;
+}
+
+Status_t intSelectionSort(int array[], int array_len) {
+    
+    for (int i = 0; i < array_len; ++i) {
+        int min_idx = i;
+        for (int j = (i + 1); j < array_len; ++j) {
+            if (array[min_idx] > array[j]) {
+                min_idx = j;
+            }
+        }
+        Status_t rc = swap(&array[i], &array[min_idx]);
+        if (rc == FAILURE) return rc;
+    }
+
+    return SUCCESS;
 }

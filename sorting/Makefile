@@ -1,5 +1,5 @@
 CC = gcc 
-CFLAGS = -Wall -Wextra 
+CFLAGS = -g -Wall -Wextra 
 UNITY_DIR = /Users/bharatkesari/dev/Unity/src
 INCLUDE_DIR = include
 
@@ -16,4 +16,4 @@ sorting.o: sorting.c $(INCLUDE_DIR)/status.h
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c sorting.c -o sorting.o
 
 clean:
-	rm -rf *.o
+	rm -rf *.o sorting_test
