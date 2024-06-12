@@ -1,5 +1,6 @@
 #include "sorting.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 static Status_t swap(int *element_1, int *element_2) {
@@ -58,5 +59,75 @@ Status_t intInsertionSort(int array[], int array_len) {
         array[j + 1] = key;
     }
 
+    return SUCCESS;
+}
+
+Status_t intMerge(int dest[], 
+                  int dest_len,
+                  int array1[], 
+                  int array1_len, 
+                  int array2[], 
+                  int array2_len) 
+{
+    int i = 0, j = 0, k = 0;
+
+    while (j < array1_len && k < array2_len && i < dest_len) {
+        if (array1[j] <= array2[k]) {
+            dest[i] = array1[j];
+            ++j;
+        } else {
+            dest[i] = array2[k];
+            ++k;
+        } 
+        ++i;
+    }
+
+    while (j < array1_len && i < dest_len) {
+        dest[i] = array1[j];
+        ++j;
+        ++i;
+    }
+
+    while (k < array2_len && i < dest_len) {
+        dest[i] = array2[k];
+        ++k;
+        ++i;
+    }
+
+    return SUCCESS;
+}
+
+Status_t intMergeSort(int array[], int array_len) {
+    
+    if (array_len <= 1) {
+        return SUCCESS;
+    }
+
+    int rc = SUCCESS;
+    int mid = array_len / 2;
+    
+    // Sort left
+    rc = intMergeSort(array, mid);
+    if (rc) return rc;
+    
+    // Sort right
+    rc = intMergeSort(&array[mid], array_len - mid);
+    if (rc) return rc;
+
+    // Merge
+    int *dest = (int *) malloc(sizeof(int) * array_len);
+    rc = intMerge(dest, array_len, array, mid, &array[mid], array_len - mid);
+    if (rc) { 
+        free(dest);
+        return rc;
+    }
+
+    // Copy over sorted array from dest to array
+    for (int i = 0; i < array_len; ++i) {
+        array[i] = dest[i];
+    }
+    
+    free(dest);
+    
     return SUCCESS;
 }

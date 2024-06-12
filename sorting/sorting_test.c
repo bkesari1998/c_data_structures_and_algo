@@ -221,6 +221,42 @@ void test_intInsertionSort_doSortSomeDuplicates(void) {
     sortSomeDuplicates(intInsertionSort);
 }
 
+void test_intMergeSort_doSortSorted(void) {
+    sortSortedTest(intMergeSort);
+}
+
+void test_intMergeSort_doSortReverseSorted(void) {
+    sortReverseSortedTest(intMergeSort); 
+}
+
+void test_intMergeSort_doSortEmpty(void) {
+    sortEmpty(intMergeSort);
+} 
+
+void test_intMergeSort_doSortLen1(void) {
+    sortLen1(intMergeSort);
+}
+
+void test_intMergeSort_doSortPartial(void) {
+    sortPartial(intMergeSort);
+}
+
+void test_intMergeSort_doSortEvenLength(void) {
+    sortEvenLength(intMergeSort);
+}
+
+void test_intMergeSort_doSortOddLength(void) {
+    sortOddLength(intMergeSort);
+}
+
+void test_intMergeSort_doSortAllSameNumber(void) {
+    sortAllSameNumber(intMergeSort);
+}
+
+void test_intMergeSort_doSortSomeDuplicates(void) {
+    sortSomeDuplicates(intMergeSort);
+}
+
 int main(void) {
     UNITY_BEGIN();
     /* ---- Bubble Sort Tests ---- */
@@ -255,6 +291,17 @@ int main(void) {
     RUN_TEST(test_intInsertionSort_doSortOddLength);
     RUN_TEST(test_intInsertionSort_doSortAllSameNumber);
     RUN_TEST(test_intInsertionSort_doSortSomeDuplicates);
+    
+    /* ---- Merge Sort Tests ---- */
+    RUN_TEST(test_intMergeSort_doSortSorted);
+    RUN_TEST(test_intMergeSort_doSortReverseSorted);
+    RUN_TEST(test_intMergeSort_doSortEmpty);
+    RUN_TEST(test_intMergeSort_doSortLen1);
+    RUN_TEST(test_intMergeSort_doSortPartial);
+    RUN_TEST(test_intMergeSort_doSortEvenLength);
+    RUN_TEST(test_intMergeSort_doSortOddLength);
+    RUN_TEST(test_intMergeSort_doSortAllSameNumber);
+    RUN_TEST(test_intMergeSort_doSortSomeDuplicates);
     return UNITY_END();
 }
 
