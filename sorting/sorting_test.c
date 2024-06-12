@@ -104,13 +104,26 @@ static void sortAllSameNumber(SortingFunction_t sorter) {
 static void sortSomeDuplicates(SortingFunction_t sorter) {
     const int ARRAY_LEN = 10;
     
-    int array[ARRAY_LEN] = { 0, 1, 2, 3, 4, 0, 1, 2, 3, 4 };
-    int sorted_array[ARRAY_LEN] = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4};
+    int array[ARRAY_LEN] = {0, 1, 2, 3, 4, 0, 1, 2, 3, 4};
+    int sorted_array[ARRAY_LEN] = {0, 0, 1, 1, 2, 2, 3, 3, 4, 4};
 
     Status_t rc = sorter(array, ARRAY_LEN);
 
     TEST_ASSERT_EQUAL_INT(SUCCESS, rc);
     TEST_ASSERT_EQUAL_INT_ARRAY(sorted_array, array, ARRAY_LEN);
+}
+
+void test_intMerge_doMergeSameLen(void) {
+    int comparison[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    int array1[5] = {1, 3, 5, 7, 9};
+    int array2[5] = {0, 2, 4, 6, 8};
+    int dest[10];
+    
+    Status_t rc = intMerge(dest, 10, array1, 5, array2, 5);
+
+    TEST_ASSERT_EQUAL_INT(SUCCESS, rc);
+    TEST_ASSERT_EQUAL_INT_ARRAY(comparison, dest, 10);
 }
 
 void test_intBubbleSort_doSortSorted(void) {
@@ -259,6 +272,9 @@ void test_intMergeSort_doSortSomeDuplicates(void) {
 
 int main(void) {
     UNITY_BEGIN();
+    
+    RUN_TEST(test_intMerge_doMergeSameLen);
+
     /* ---- Bubble Sort Tests ---- */
     RUN_TEST(test_intBubbleSort_doSortSorted);
     RUN_TEST(test_intBubbleSort_doSortReverseSorted);
