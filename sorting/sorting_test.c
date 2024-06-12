@@ -185,8 +185,45 @@ void test_intSelectionSort_doSortSomeDuplicates(void) {
     sortSomeDuplicates(intSelectionSort);
 }
 
+void test_intInsertionSort_doSortSorted(void) {
+    sortSortedTest(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortReverseSorted(void) {
+    sortReverseSortedTest(intInsertionSort); 
+}
+
+void test_intInsertionSort_doSortEmpty(void) {
+    sortEmpty(intInsertionSort);
+} 
+
+void test_intInsertionSort_doSortLen1(void) {
+    sortLen1(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortPartial(void) {
+    sortPartial(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortEvenLength(void) {
+    sortEvenLength(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortOddLength(void) {
+    sortOddLength(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortAllSameNumber(void) {
+    sortAllSameNumber(intInsertionSort);
+}
+
+void test_intInsertionSort_doSortSomeDuplicates(void) {
+    sortSomeDuplicates(intInsertionSort);
+}
+
 int main(void) {
     UNITY_BEGIN();
+    /* ---- Bubble Sort Tests ---- */
     RUN_TEST(test_intBubbleSort_doSortSorted);
     RUN_TEST(test_intBubbleSort_doSortReverseSorted);
     RUN_TEST(test_intBubbleSort_doSortEmpty);
@@ -195,6 +232,9 @@ int main(void) {
     RUN_TEST(test_intBubbleSort_doSortEvenLength);
     RUN_TEST(test_intBubbleSort_doSortOddLength);
     RUN_TEST(test_intBubbleSort_doSortAllSameNumber);
+    RUN_TEST(test_intBubbleSort_doSortSomeDuplicates);
+
+    /* ---- Selection Sort Tests ---- */
     RUN_TEST(test_intSelectionSort_doSortSorted);
     RUN_TEST(test_intSelectionSort_doSortReverseSorted);
     RUN_TEST(test_intSelectionSort_doSortEmpty);
@@ -203,6 +243,18 @@ int main(void) {
     RUN_TEST(test_intSelectionSort_doSortEvenLength);
     RUN_TEST(test_intSelectionSort_doSortOddLength);
     RUN_TEST(test_intSelectionSort_doSortAllSameNumber);
+    RUN_TEST(test_intSelectionSort_doSortSomeDuplicates);
+
+    /* ---- Insertion Sort Tests ---- */
+    RUN_TEST(test_intInsertionSort_doSortSorted);
+    RUN_TEST(test_intInsertionSort_doSortReverseSorted);
+    RUN_TEST(test_intInsertionSort_doSortEmpty);
+    RUN_TEST(test_intInsertionSort_doSortLen1);
+    RUN_TEST(test_intInsertionSort_doSortPartial);
+    RUN_TEST(test_intInsertionSort_doSortEvenLength);
+    RUN_TEST(test_intInsertionSort_doSortOddLength);
+    RUN_TEST(test_intInsertionSort_doSortAllSameNumber);
+    RUN_TEST(test_intInsertionSort_doSortSomeDuplicates);
     return UNITY_END();
 }
 
