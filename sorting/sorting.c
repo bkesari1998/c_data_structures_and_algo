@@ -44,3 +44,19 @@ Status_t intSelectionSort(int array[], int array_len) {
 
     return SUCCESS;
 }
+
+Status_t intInsertionSort(int array[], int array_len) {
+    
+    for (int i = 0; i < array_len; ++i) {
+        int key = array[i];
+
+        int j = i - 1;
+        while ( j >= 0 && array[j] > key ) {
+            array[j + 1] = array[j];
+            --j;
+        }
+        array[j + 1] = key;
+    }
+
+    return SUCCESS;
+}
